@@ -8,148 +8,173 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            background: linear-gradient(to bottom, #e0e7ff, #f3e8ff); /* Soft gradient background */
         }
-        /* Optional: Custom CSS for more refined styling (beyond Tailwind) */
         .container {
-            max-width: 1200px; /* Increased max-width for larger screens */
+            max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
         }
         .section-title {
-            font-size: 2.25rem; /* Larger font size */
+            font-size: 2.5rem;
             font-weight: bold;
-            margin-bottom: 2rem;
-            color: #1e293b; /* Slightly darker heading color */
-            text-align: center; /* Center headings */
+            margin-bottom: 2.5rem;
+            color: #2d3748;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: linear-gradient(to right, #7c3aed, #db2777); /* Vibrant gradient */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .header {
+            background: linear-gradient(to right, #4f46e5, #7c3aed); /* Colorful header */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .nav-link {
+            color: #ffffff;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #f472b6; /* Bright pink hover */
         }
         .project-card {
-            background-color: white;
-            border-radius: 0.75rem; /* More rounded corners */
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* More subtle shadow */
-            padding: 2rem; /* Increased padding */
-            margin-bottom: 2rem; /* Increased margin */
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transition */
+            background-color: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid #10b981; /* Emerald accent */
         }
         .project-card:hover {
-            transform: translateY(-0.5rem); /* Slight lift on hover */
-            box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.15), 0 3px 6px -1px rgba(0, 0, 0, 0.08); /* Increased shadow on hover */
+            transform: translateY(-0.5rem);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
         .project-title {
-            font-size: 1.5rem; /* Larger font size */
+            font-size: 1.75rem;
             font-weight: bold;
             margin-bottom: 1rem;
-            color: #1e293b; /* Darker title color */
+            color: #1e40af; /* Deep blue */
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         .project-description {
-            line-height: 1.75; /* Improved line height for readability */
-            color: #4b5563; /* Slightly darker description color */
-            margin-bottom: 1.5rem; /* Increased margin */
+            line-height: 1.75;
+            color: #4b5563;
+            margin-bottom: 1.5rem;
         }
         .tech-stack {
             font-weight: 600;
-            color: #1e293b; /* Darker tech stack title */
-            margin-bottom: 0.75rem; /* Increased margin */
+            color: #2d3748;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         .tech-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.75rem; /* Increased gap */
-            margin-bottom: 1.5rem; /* Increased margin */
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
         }
         .tech-item {
-            background-color: #f0f4f8; /* Lighter background color */
-            color: #334155; /* Darker text color */
-            padding: 0.5rem 1rem; /* Slightly increased padding */
-            border-radius: 1rem; /* Fully rounded corners */
-            font-size: 0.875rem; /* Slightly larger font size */
-            font-weight: 500; /* Medium font weight */
-        }
-        .view-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.75rem 1.5rem; /* Increased padding */
-            background-color: #6366f1; /* More vibrant button color */
-            color: white;
-            font-size: 1rem; /* Larger font size */
-            font-weight: 600; /* Medium font weight */
-            border-radius: 0.75rem; /* More rounded corners */
-            transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out; /* Smooth transition */
-            cursor: pointer;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added shadow */
-        }
-        .view-button:hover {
-            background-color: #4338ca; /* Darker shade on hover */
-            transform: translateY(-0.25rem); /* Slight lift on hover */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Increased shadow on hover */
-        }
-        .section-header {
+            background: linear-gradient(to right, #f472b6, #fb7185); /* Pink gradient */
+            color: #ffffff;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
             display: flex;
             align-items: center;
-            gap: 1.5rem; /* Increased gap */
-            margin-bottom: 2rem; /* Increased margin */
+            gap: 0.25rem;
         }
-        .section-header-title {
-            font-size: 2.25rem; /* Larger font size */
-            font-weight: bold;
-            color: #1e293b; /* Darker heading color */
+        .view-button {
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(to right, #3b82f6, #10b981); /* Blue to emerald */
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 0.75rem;
+            transition: background 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-        .profile-picture {
-            width: 150px; /* Larger image */
-            height: 150px; /* Larger image */
-            border-radius: 50%;
-            object-fit: cover;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* More subtle shadow */
+        .view-button:hover {
+            background: linear-gradient(to right, #1e40af, #047857); /* Darker shades */
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         .about-content {
-            line-height: 1.75; /* Improved line height for readability */
-            color: #4b5563; /* Slightly darker description color */
+            line-height: 1.75;
+            color: #4b5563;
+            background-color: #f9fafb;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         .skills-section {
-            background-color: #f7fafc; /* Very light background */
-            padding-top: 4rem; /* Increased padding */
-            padding-bottom: 4rem; /* Increased padding */
-            border-radius: 0.75rem; /* Rounded corners for the whole section */
-            margin-top: 2rem; /* Increased margin */
+            background: linear-gradient(to bottom, #a5b4fc, #d8b4fe); /* Indigo to purple */
+            padding: 4rem 0;
+            border-radius: 1rem;
+            margin-top: 2rem;
         }
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid, wider columns */
-            gap: 1.5rem; /* Increased gap */
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
         }
         .skill-card {
-            background-color: white;
-            border-radius: 0.75rem; /* More rounded corners */
-            padding: 1.5rem; /* Increased padding */
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* More subtle shadow */
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transition */
+            background-color: #ffffff;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid #f472b6; /* Pink accent */
         }
         .skill-card:hover {
-            transform: translateY(-0.25rem); /* Slight lift on hover */
-            box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.15), 0 3px 6px -1px rgba(0, 0, 0, 0.08); /* Increased shadow on hover */
+            transform: translateY(-0.25rem);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
         }
         .skill-title {
-            font-size: 1.25rem; /* Larger font size */
-            font-weight: 600; /* Medium font weight */
-            margin-bottom: 0.75rem; /* Increased margin */
-            color: #1e293b; /* Darker title color */
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #7c3aed; /* Vibrant purple */
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .skill-list li:before {
+            content: '\f058'; /* Font Awesome check-circle */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: #10b981;
+            margin-right: 0.5rem;
         }
         .progress-bar {
-            background-color: #e5e7eb; /* Lighter progress bar background */
-            height: 0.75rem; /* Slightly thicker bar */
-            border-radius: 0.75rem; /* Fully rounded corners */
+            background-color: #e5e7eb;
+            height: 0.75rem;
+            border-radius: 0.75rem;
             position: relative;
-            overflow: hidden; /* Ensure progress doesn't overflow */
+            overflow: hidden;
         }
         .progress-bar-fill {
-            background-color: #6366f1; /* More vibrant progress bar fill */
+            background: linear-gradient(to right, #3b82f6, #10b981); /* Blue to emerald */
             height: 100%;
-            border-radius: 0.75rem; /* Fully rounded corners */
-            transition: width 0.5s ease-in-out; /* Smooth transition */
-            position: relative; /* For the percentage label */
+            border-radius: 0.75rem;
+            transition: width 0.5s ease-in-out;
         }
         .progress-bar-text {
             position: absolute;
@@ -157,145 +182,139 @@
             left: 50%;
             transform: translate(-50%, -50%);
             color: white;
-            font-size: 0.875rem; /* Slightly larger font size */
-            font-weight: 600; /* Medium font weight */
-            z-index: 1;
+            font-size: 0.875rem;
+            font-weight: 600;
         }
         .education-section {
-            margin-top: 4rem; /* Increased margin */
-            margin-bottom: 4rem; /* Increased margin */
+            margin: 4rem 0;
+            background-color: #fef3c7; /* Soft yellow */
+            padding: 2rem;
+            border-radius: 1rem;
         }
         .education-card {
-            background-color: white;
-            border-radius: 0.75rem; /* More rounded corners */
-            padding: 2rem; /* Increased padding */
-            margin-bottom: 2rem; /* Increased margin */
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* More subtle shadow */
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transition */
+            background-color: #ffffff;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid #3b82f6; /* Blue accent */
         }
         .education-card:hover {
-            transform: translateY(-0.25rem); /* Slight lift on hover */
-            box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.15), 0 3px 6px -1px rgba(0, 0, 0, 0.08); /* Increased shadow on hover */
+            transform: translateY(-0.25rem);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
         }
         .degree {
-            font-size: 1.25rem; /* Larger font size */
+            font-size: 1.25rem;
             font-weight: bold;
-            margin-bottom: 0.75rem; /* Increased margin */
-            color: #1e293b; /* Darker title color */
+            margin-bottom: 0.75rem;
+            color: #1e40af;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-        .university {
-            font-size: 1rem; /* Larger font size */
-            color: #4b5563; /* Slightly darker color */
-            margin-bottom: 0.5rem; /* Increased margin */
-        }
-        .date {
-            font-size: 0.875rem; /* Slightly larger font size */
-            color: #6b7280; /* Slightly darker color */
-            margin-bottom: 1rem; /* Increased margin */
-        }
-        .gpa {
-            font-size: 1rem; /* Larger font size */
-            font-weight: 600; /* Medium font weight */
-            color: #334155; /* Darker color */
+        .university, .date, .gpa {
+            color: #4b5563;
         }
         .certifications-section {
-            margin-top: 4rem; /* Increased margin */
-            margin-bottom: 4rem; /* Increased margin */
+            margin: 4rem 0;
+            background-color: #d1fae5; /* Soft green */
+            padding: 2rem;
+            border-radius: 1rem;
         }
         .certification-card {
-            background-color: white;
-            border-radius: 0.75rem; /* More rounded corners */
-            padding: 1.5rem; /* Increased padding */
-            margin-bottom: 2rem; /* Increased margin */
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* More subtle shadow */
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transition */
+            background-color: #ffffff;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid #db2777; /* Pink accent */
         }
         .certification-card:hover {
-            transform: translateY(-0.25rem); /* Slight lift on hover */
-            box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.15), 0 3px 6px -1px rgba(0, 0, 0, 0.08); /* Increased shadow on hover */
+            transform: translateY(-0.25rem);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
         }
         .certification-name {
-            font-size: 1.25rem; /* Larger font size */
-            font-weight: 600; /* Medium font weight */
-            margin-bottom: 0.75rem; /* Increased margin */
-            color: #1e293b; /* Darker title color */
-        }
-        .issuer {
-            font-size: 1rem; /* Larger font size */
-            color: #4b5563; /* Slightly darker color */
-            margin-bottom: 0.5rem; /* Increased margin */
-        }
-        .certification-date {
-            font-size: 0.875rem; /* Slightly larger font size */
-            color: #6b7280; /* Slightly darker color */
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #7c3aed;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         .contact-section {
-            background-color: #f7fafc; /* Very light background */
-            padding-top: 4rem; /* Increased padding */
-            padding-bottom: 4rem; /* Increased padding */
-            border-radius: 0.75rem; /* Rounded corners for the whole section */
-            margin-top: 2rem; /* Increased margin */
-            text-align: center; /* Center contact information */
+            background: linear-gradient(to bottom, #f9a8d4, #fef3c7); /* Pink to yellow */
+            padding: 4rem 0;
+            border-radius: 1rem;
+            margin-top: 2rem;
+            text-align: center;
         }
         .contact-heading {
-            font-size: 2.25rem; /* Larger font size */
+            font-size: 2.5rem;
             font-weight: bold;
-            margin-bottom: 2rem; /* Increased margin */
-            color: #1e293b; /* Darker heading color */
+            margin-bottom: 2rem;
+            color: #2d3748;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
         }
-        .contact-details {
-            font-size: 1.25rem; /* Larger font size */
-            line-height: 2; /* Increased line height */
-            color: #4b5563; /* Slightly darker color */
-            margin-bottom: 2rem; /* Increased margin */
+        .contact-details p {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 1.25rem;
+            color: #4b5563;
+            margin-bottom: 0.75rem;
         }
         .social-links {
             display: flex;
-            justify-content: center; /* Center social links */
-            gap: 1.5rem; /* Increased gap */
+            justify-content: center;
+            gap: 1.5rem;
         }
         .social-link {
-            display: inline-flex;
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            background: linear-gradient(to right, #3b82f6, #10b981);
+            color: #ffffff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
             align-items: center;
             justify-content: center;
-            width: 3rem; /* Larger icons */
-            height: 3rem; /* Larger icons */
-            border-radius: 50%;
-            background-color: white;
-            color: #1e293b; /* Darker icon color */
-            transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out; /* Smooth transition */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added shadow */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         .social-link:hover {
-            background-color: #6366f1; /* More vibrant hover color */
-            color: white;
-            transform: scale(1.1); /* Slight scale on hover */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Increased shadow on hover */
+            background: linear-gradient(to right, #1e40af, #047857);
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         .footer {
             text-align: center;
-            padding: 2.5rem; /* Increased padding */
-            background-color: #f0f4f8; /* Very light background */
-            color: #6b7280; /* Slightly darker color */
-            border-top: 1px solid #e0e6ed; /* Subtle border */
-            margin-top: 4rem; /* Increased margin */
-            border-bottom-left-radius: 0.75rem;  /* Rounded corners */
-            border-bottom-right-radius: 0.75rem;
+            padding: 2.5rem;
+            background: linear-gradient(to right, #4f46e5, #7c3aed);
+            color: #ffffff;
+            margin-top: 4rem;
+            border-bottom-left-radius: 1rem;
+            border-bottom-right-radius: 1rem;
         }
     </style>
 </head>
-<body class="bg-gray-100">
-    <header class="bg-white py-6 shadow-md">
+<body>
+    <header class="header py-6">
         <div class="container">
             <div class="flex items-center justify-between">
-                <h1 class="text-2xl font-bold text-gray-800">M Manoj Kumar Reddy</h1>
+                <h1 class="text-3xl font-bold text-white">M Manoj Kumar Reddy</h1>
                 <nav>
                     <ul class="flex space-x-6">
-                        <li><a href="#about" class="text-gray-700 hover:text-blue-600 transition duration-300">About</a></li>
-                        <li><a href="#projects" class="text-gray-700 hover:text-blue-600 transition duration-300">Projects</a></li>
-                        <li><a href="#skills" class="text-gray-700 hover:text-blue-600 transition duration-300">Skills</a></li>
-                        <li><a href="#education" class="text-gray-700 hover:text-blue-600 transition duration-300">Education</a></li>
-                        <li><a href="#contact" class="text-gray-700 hover:text-blue-600 transition duration-300">Contact</a></li>
+                        <li><a href="#about" class="nav-link">About</a></li>
+                        <li><a href="#projects" class="nav-link">Projects</a></li>
+                        <li><a href="#skills" class="nav-link">Skills</a></li>
+                        <li><a href="#education" class="nav-link">Education</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -303,88 +322,85 @@
     </header>
 
     <main>
-        <section id="about" class="container py-10">
-            <div class="section-header">
-                <img src="placeholder-profile-picture.png" alt="M Manoj Kumar Reddy" class="profile-picture">
-                <div class="header-content">
-                    <h2 class="section-header-title">About Me</h2>
-                    <p class="about-content">
-                        Highly motivated and results-oriented aspiring Data Scientist and AI Engineer with a strong academic foundation in Data Science, Artificial Intelligence, and Electronics & Communication Engineering. Proven ability to develop and implement machine learning models, conduct insightful data analysis, and visualize complex information. Eager to apply my skills in Python, SQL, R, and cloud computing (Microsoft Azure certified) to contribute to innovative and impactful projects. My experience includes developing applications for automation, medical image analysis, and employee burnout prediction. I am a quick learner, a strong problem-solver, and a collaborative team player.
-                    </p>
-                </div>
+        <section id="about" class="container py-12">
+            <h2 class="section-title"><i class="fas fa-user"></i> About Me</h2>
+            <div class="about-content">
+                <p>
+                    Highly motivated and results-oriented aspiring Data Scientist and AI Engineer with a strong academic foundation in Data Science, Artificial Intelligence, and Electronics & Communication Engineering. Proven ability to develop and implement machine learning models, conduct insightful data analysis, and visualize complex information. Eager to apply my skills in Python, SQL, R, and cloud computing (Microsoft Azure certified) to contribute to innovative and impactful projects. My experience includes developing applications for automation, medical image analysis, and employee burnout prediction. I am a quick learner, a strong problem-solver, and a collaborative team player.
+                </p>
             </div>
         </section>
 
-        <section id="projects" class="container py-10">
-            <h2 class="section-title">Projects</h2>
+        <section id="projects" class="container py-12">
+            <h2 class="section-title"><i class="fas fa-project-diagram"></i> Projects</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="project-card">
-                    <h3 class="project-title">Attendance Tracking System</h3>
+                    <h3 class="project-title"><i class="fas fa-fingerprint"></i> Attendance Tracking System</h3>
                     <p class="project-description">
                         A Python application designed to automate college attendance tracking using laser scanner input. The system processes scanned data, separates it by college, and automatically sends attendance reports with date, time, and training information to relevant email addresses. Implemented with Docker for containerization and deployed on a Linux environment.
                     </p>
-                    <div class="tech-stack">Tech Stack:</div>
+                    <div class="tech-stack"><i class="fas fa-tools"></i> Tech Stack:</div>
                     <div class="tech-list">
-                        <span class="tech-item">Python</span>
-                        <span class="tech-item">Laser Scanning</span>
-                        <span class="tech-item">Docker</span>
-                        <span class="tech-item">Linux</span>
-                        <span class="tech-item">Email Automation</span>
-                        <span class="tech-item">GitHub</span>
+                        <span class="tech-item"><i class="fab fa-python"></i> Python</span>
+                        <span class="tech-item"><i class="fas fa-qrcode"></i> Laser Scanning</span>
+                        <span class="tech-item"><i class="fab fa-docker"></i> Docker</span>
+                        <span class="tech-item"><i class="fab fa-linux"></i> Linux</span>
+                        <span class="tech-item"><i class="fas fa-envelope"></i> Email Automation</span>
+                        <span class="tech-item"><i class="fab fa-github"></i> GitHub</span>
                     </div>
-                    <a href="#" class="view-button">View on GitHub</a>
+                    <a href="#" class="view-button"><i class="fab fa-github"></i> View on GitHub</a>
                 </div>
                 <div class="project-card">
-                    <h3 class="project-title">Brain Tumor Detection and Severity Analysis</h3>
+                    <h3 class="project-title"><i class="fas fa-brain"></i> Brain Tumor Detection and Severity Analysis</h3>
                     <p class="project-description">
                         A medical image processing project focused on detecting and classifying brain tumors using MRI image datasets. Employed GUI development for user interaction and implemented various machine learning techniques for image analysis and classification. Involved statistical analysis and preprocessing of complex medical data.
                     </p>
-                    <div class="tech-stack">Tech Stack:</div>
+                    <div class="tech-stack"><i class="fas fa-tools"></i> Tech Stack:</div>
                     <div class="tech-list">
-                        <span class="tech-item">Python</span>
-                        <span class="tech-item">Medical Image Processing</span>
-                        <span class="tech-item">GUI Development</span>
-                        <span class="tech-item">Machine Learning</span>
-                        <span class="tech-item">Statistical Analysis</span>
+                        <span class="tech-item"><i class="fab fa-python"></i> Python</span>
+                        <span class="tech-item"><i class="fas fa-image"></i> Medical Image Processing</span>
+                        <span class="tech-item"><i class="fas fa-desktop"></i> GUI Development</span>
+                        <span class="tech-item"><i class="fas fa-robot"></i> Machine Learning</span>
+                        <span class="tech-item"><i class="fas fa-chart-bar"></i> Statistical Analysis</span>
                     </div>
-                    <a href="#" class="view-button">View Details</a>
+                    <a href="#" class="view-button"><i class="fas fa-info-circle"></i> View Details</a>
                 </div>
                 <div class="project-card">
-                    <h3 class="project-title">AI Employees Burnout Analysis and Prediction</h3>
+                    <h3 class="project-title"><i class="fas fa-users"></i> AI Employees Burnout Analysis and Prediction</h3>
                     <p class="project-description">
                         This project aimed to develop a predictive model for employee burnout, enabling organizations to proactively identify and address potential issues. I utilized a dataset containing various workplace factors to train machine learning models.
                     </p>
-                    <div class="tech-stack">Tech Stack:</div>
+                    <div class="tech-stack"><i class="fas fa-tools"></i> Tech Stack:</div>
                     <div class="tech-list">
-                        <span class="tech-item">Python</span>
-                        <span class="tech-item">Pandas</span>
-                        <span class="tech-item">NumPy</span>
-                        <span class="tech-item">Scikit-learn</span>
-                        <span class="tech-item">Jupyter Notebook</span>
-                        <span class="tech-item">Logistic Regression</span>
-                        <span class="tech-item">Random Forests</span>
-                        <span class="tech-item">Matplotlib</span>
-                        <span class="tech-item">Seaborn</span>
-                        <span class="tech-item">Git</span>
-                        <span class="tech-item">GitHub</span>
+                        <span class="tech-item"><i class="fab fa-python"></i> Python</span>
+                        <span class="tech-item"><i class="fas fa-table"></i> Pandas</span>
+                        <span class="tech-item"><i class="fas fa-calculator"></i> NumPy</span>
+                        <span class="tech-item"><i class="fas fa-robot"></i> Scikit-learn</span>
+                        <span class="tech-item"><i class="fas fa-book"></i> Jupyter Notebook</span>
+                        <span class="tech-item"><i class="fas fa-chart-line"></i> Logistic Regression</span>
+                        <span class="tech-item"><i class="fas fa-tree"></i> Random Forests</span>
+                        <span class="tech-item"><i class="fas fa-chart-pie"></i> Matplotlib</span>
+                        <span class="tech-item"><i class="fas fa-chart-area"></i> Seaborn</span>
+                        <span class="tech-item"><i class="fas fa-code-branch"></i> Git</span>
+                        <span class="tech-item"><i class="fab fa-github"></i> GitHub</span>
                     </div>
-                    <a href="#" class="view-button">View on GitHub</a>
+                    <a href="#" class="view-button"><i class="fab fa-github"></i> View on GitHub</a>
                 </div>
             </div>
         </section>
 
         <section id="skills" class="skills-section">
             <div class="container">
-                <h2 class="section-title">Skills</h2>
+                <h2 class="section-title"><i class="fas fa-tools"></i> Skills</h2>
                 <div class="skills-grid">
                     <div class="skill-card">
-                        <h3 class="skill-title">Data Science & AI</h3>
+                        <h3 class="skill-title"><i class="fas fa-robot"></i> Data Science & AI</h3>
                         <div class="progress-bar">
                             <div class="progress-bar-fill" style="width: 90%;">
                                 <span class="progress-bar-text">90%</span>
                             </div>
                         </div>
-                        <ul class="mt-4 space-y-2">
+                        <ul class="mt-4 space-y-2 skill-list">
                             <li>Machine Learning</li>
                             <li>Deep Learning</li>
                             <li>Exploratory Data Analysis (EDA)</li>
@@ -392,13 +408,13 @@
                         </ul>
                     </div>
                     <div class="skill-card">
-                        <h3 class="skill-title">Programming Languages</h3>
+                        <h3 class="skill-title"><i class="fas fa-code"></i> Programming Languages</h3>
                         <div class="progress-bar">
                             <div class="progress-bar-fill" style="width: 85%;">
                                 <span class="progress-bar-text">85%</span>
                             </div>
                         </div>
-                        <ul class="mt-4 space-y-2">
+                        <ul class="mt-4 space-y-2 skill-list">
                             <li>Python</li>
                             <li>SQL</li>
                             <li>R</li>
@@ -406,13 +422,13 @@
                         </ul>
                     </div>
                     <div class="skill-card">
-                        <h3 class="skill-title">Data Visualization</h3>
+                        <h3 class="skill-title"><i class="fas fa-chart-bar"></i> Data Visualization</h3>
                         <div class="progress-bar">
                             <div class="progress-bar-fill" style="width: 80%;">
                                 <span class="progress-bar-text">80%</span>
                             </div>
                         </div>
-                        <ul class="mt-4 space-y-2">
+                        <ul class="mt-4 space-y-2 skill-list">
                             <li>Excel</li>
                             <li>Google Sheets</li>
                             <li>Matplotlib</li>
@@ -420,24 +436,24 @@
                         </ul>
                     </div>
                     <div class="skill-card">
-                        <h3 class="skill-title">Cloud Computing</h3>
+                        <h3 class="skill-title"><i class="fas fa-cloud"></i> Cloud Computing</h3>
                         <div class="progress-bar">
                             <div class="progress-bar-fill" style="width: 70%;">
                                 <span class="progress-bar-text">70%</span>
                             </div>
                         </div>
-                        <ul class="mt-4 space-y-2">
+                        <ul class="mt-4 space-y-2 skill-list">
                             <li>Microsoft Azure (AZ-104)</li>
                         </ul>
                     </div>
                     <div class="skill-card">
-                        <h3 class="skill-title">Statistical Analysis</h3>
+                        <h3 class="skill-title"><i class="fas fa-chart-line"></i> Statistical Analysis</h3>
                         <div class="progress-bar">
                             <div class="progress-bar-fill" style="width: 90%;">
-                                 <span class="progress-bar-text">90%</span>
+                                <span class="progress-bar-text">90%</span>
                             </div>
                         </div>
-                        <ul class="mt-4 space-y-2">
+                        <ul class="mt-4 space-y-2 skill-list">
                             <li>Descriptive Statistics</li>
                             <li>Inferential Statistics</li>
                             <li>Probability</li>
@@ -445,13 +461,13 @@
                         </ul>
                     </div>
                     <div class="skill-card">
-                        <h3 class="skill-title">Databases & Tools</h3>
+                        <h3 class="skill-title"><i class="fas fa-database"></i> Databases & Tools</h3>
                         <div class="progress-bar">
                             <div class="progress-bar-fill" style="width: 80%;">
                                 <span class="progress-bar-text">80%</span>
                             </div>
                         </div>
-                        <ul class="mt-4 space-y-2">
+                        <ul class="mt-4 space-y-2 skill-list">
                             <li>SQL</li>
                             <li>Pandas</li>
                             <li>NumPy</li>
@@ -463,5 +479,69 @@
 
         <section id="education" class="education-section">
             <div class="container">
-                <h2 class="section-title">Education</h2>
-                <div cl
+                <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
+                <div class="education-list">
+                    <div class="education-card">
+                        <h3 class="degree"><i class="fas fa-book"></i> Master of Science: Data Science and Artificial Intelligence</h3>
+                        <p class="university">University of Central Missouri - Lee’s Summit, KS</p>
+                        <p class="date">January 2025 - December 2026</p>
+                        <p class="gpa">GPA: 4.0/4.0</p>
+                    </div>
+                    <div class="education-card">
+                        <h3 class="degree"><i class="fas fa-book"></i> Bachelor of Technology: Electronics and Communication Engineering</h3>
+                        <p class="university">Aditya College of Engineering and Technology – Surampalem, India</p>
+                        <p class="date">May 2020 - May 2024</p>
+                        <p class="gpa">GPA: 3.3/4.0</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="certifications" class="certifications-section">
+            <div class="container">
+                <h2 class="section-title"><i class="fas fa-certificate"></i> Certifications</h2>
+                <div class="certification-list">
+                    <div class="certification-card">
+                        <h3 class="certification-name"><i class="fab fa-python"></i> Python for Data Science</h3>
+                        <p class="issuer">NPTEL</p>
+                        <p class="certification-date">Date not specified</p>
+                    </div>
+                    <div class="certification-card">
+                        <h3 class="certification-name"><i class="fas fa-cloud"></i> Azure Administrator Associate (AZ-104)</h3>
+                        <p class="issuer">Microsoft</p>
+                        <p class="certification-date">Date not specified</p>
+                    </div>
+                    <div class="certification-card">
+                        <h3 class="certification-name"><i class="fas fa-cloud"></i> Azure Fundamentals (AZ-900)</h3>
+                        <p class="issuer">Microsoft</p>
+                        <p class="certification-date">Date not specified</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="contact-heading"><i class="fas fa-envelope"></i> Contact Me</h2>
+                <div class="contact-details">
+                    <p><i class="fas fa-map-marker-alt"></i> Overland Park, KS, 66213</p>
+                    <p><i class="fas fa-phone"></i> +1 (913) 238-8923</p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:mallireddymanojreddy@gmail.com" class="text-blue-600 hover:underline">mallireddymanojreddy@gmail.com</a></p>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/your-linkedin" class="social-link" target="_blank">
+                        <i class="fab fa-linkedin fa-lg"></i>
+                    </a>
+                    <a href="https://github.com/your-github" class="social-link" target="_blank">
+                        <i class="fab fa-github fa-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 M Manoj Kumar Reddy. All rights reserved.</p>
+    </footer>
+</body>
+</html>
