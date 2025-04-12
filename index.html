@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M Manoj Kumar Reddy - Data Scientist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Optional: Custom CSS for more refined styling (beyond Tailwind) */
+        .container {
+            max-width: 1200px; /* Increased max-width for larger screens */
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .section-title {
+            font-size: 2.25rem; /* Larger font size */
+            font-weight: bold;
+            margin-bottom: 2rem;
+            color: #1e293b; /* Slightly darker heading color */
+            text-align: center; /* Center headings */
+        }
+        .project-card {
+            background-color: white;
+            border-radius: 0.75rem; /* More rounded corners */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* More subtle shadow */
+            padding: 2rem; /* Increased padding */
+            margin-bottom: 2rem; /* Increased margin */
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transition */
+        }
+        .project-card:hover {
+            transform: translateY(-0.5rem); /* Slight lift on hover */
+            box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.15), 0 3px 6px -1px rgba(0, 0, 0, 0.08); /* Increased shadow on hover */
+        }
+        .project-title {
+            font-size: 1.5rem; /* Larger font size */
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #1e293b; /* Darker title color */
+        }
+        .project-description {
+            line-height: 1.75; /* Improved line height for readability */
+            color: #4b5563; /* Slightly darker description color */
+            margin-bottom: 1.5rem; /* Increased margin */
+        }
+        .tech-stack {
+            font-weight: 600;
+            color: #1e293b; /* Darker tech stack title */
+            margin-bottom: 0.75rem; /* Increased margin */
+        }
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem; /* Increased gap */
+            margin-bottom: 1.5rem; /* Increased margin */
+        }
+        .tech-item {
+            background-color: #f0f4f8; /* Lighter background color */
+            color: #334155; /* Darker text color */
+            padding: 0.5rem 1rem; /* Slightly increased padding */
+            border-radius: 1rem; /* Fully rounded corners */
+            font-size: 0.875rem; /* Slightly larger font size */
+            font-weight: 500; /* Medium font weight */
+        }
+        .view-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem; /* Increased padding */
+            background-color: #6366f1; /* More vibrant button color */
+            color: white;
+            font-size: 1rem; /* Larger font size */
+            font-weight: 600; /* Medium font weight */
+            border-radius: 0.75rem; /* More rounded corners */
+            transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out; /* Smooth transition */
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added shadow */
+        }
+        .view-button:hover {
+            background-color: #4338ca; /* Darker shade on hover */
+            transform: translateY(-0.25rem); /* Slight lift on hover */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Increased shadow on hover */
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem; /* Increased gap */
+            margin-bottom: 2rem; /* Increased margin */
+        }
+        .section-header-title {
+            font-size: 2.25rem; /* Larger font size */
+            font-weight: bold;
+            color: #1e293b; /* Darker heading color */
+        }
+        .profile-picture {
+            width: 150px; /* Larger image */
+            height: 150px; /* Larger image */
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* More subtle shadow */
+        }
+        .about-content {
+            line-height: 1.75; /* Improved line height for readability */
+            color: #4b5563; /* Slightly darker description color */
+        }
+        .skills-section {
+            background-color: #f7fafc; /* Very light background */
+            padding-top: 4rem; /* Increased padding */
+            padding-bottom: 4rem; /* Increased padding */
+            border-radius: 0.75rem; /* Rounded corners for the whole section */
+            margin-top: 2rem; /* Increased margin */
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid, wider columns */
+            gap: 1.5rem; /* Increased gap */
+        }
+        .skill-card {
+            background-color: white;
+            border-radius: 0.75rem; /* More rounded corners */
+            padding: 1.5rem; /* Increased padding */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* More subtle shadow */
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transition */
+        }
+        .skill-card:hover {
+            transform: translateY(-0.25rem); /* Slight lift on hover */
+            box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.15), 0 3px 6px -1px rgba(0, 0, 0, 0.08); /* Increased shadow on hover */
+        }
+        .skill-title {
+            font-size: 1.25rem; /* Larger font size */
+            font-weight: 600; /* Medium font weight */
+            margin-bottom: 0.75rem; /* Increased margin */
+            color: #1e293b; /* Darker title color */
+        }
+        .progress-bar {
+            background-color: #e5e7eb; /* Lighter progress bar background */
+            height: 0.75rem; /* Slightly thicker bar */
+            border-radius: 0.75rem; /* Fully rounded corners */
+            position: relative;
+            overflow: hidden; /* Ensure progress doesn't overflow */
+        }
+        .progress-bar-fill {
+            background-color: #6366f1; /* More vibrant progress bar fill */
+            height: 100%;
+            border-radius: 0.75rem; /* Fully rounded corners */
+            transition: width 0.5s ease-in-out; /* Smooth transition */
+            position: relative; /* For the percentage label */
+        }
+        .progress-bar-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 0.875rem; /* Slightly larger font size */
+            font-weight: 600; /* Medium font weight */
+            z-index: 1;
+        }
+        .education-section {
+            margin-top: 4rem; /* Increased margin */
+            margin-bottom: 4rem; /* Increased margin */
+        }
+        .education-card {
+            background-color: white;
+            border-radius: 0.75rem; /* More rounded corners */
+            padding: 2rem; /* Increased padding */
+            margin-bottom: 2rem; /* Increased margin */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* More subtle shadow */
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transition */
+        }
+        .education-card:hover {
+            transform: translateY(-0.25rem); /* Slight lift on hover */
+            box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.15), 0 3px 6px -1px rgba(0, 0, 0, 0.08); /* Increased shadow on hover */
+        }
+        .degree {
+            font-size: 1.25rem; /* Larger font size */
+            font-weight: bold;
+            margin-bottom: 0.75rem; /* Increased margin */
+            color: #1e293b; /* Darker title color */
+        }
+        .university {
+            font-size: 1rem; /* Larger font size */
+            color: #4b5563; /* Slightly darker color */
+            margin-bottom: 0.5rem; /* Increased margin */
+        }
+        .date {
+            font-size: 0.875rem; /* Slightly larger font size */
+            color: #6b7280; /* Slightly darker color */
+            margin-bottom: 1rem; /* Increased margin */
+        }
+        .gpa {
+            font-size: 1rem; /* Larger font size */
+            font-weight: 600; /* Medium font weight */
+            color: #334155; /* Darker color */
+        }
+        .certifications-section {
+            margin-top: 4rem; /* Increased margin */
+            margin-bottom: 4rem; /* Increased margin */
+        }
+        .certification-card {
+            background-color: white;
+            border-radius: 0.75rem; /* More rounded corners */
+            padding: 1.5rem; /* Increased padding */
+            margin-bottom: 2rem; /* Increased margin */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* More subtle shadow */
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transition */
+        }
+        .certification-card:hover {
+            transform: translateY(-0.25rem); /* Slight lift on hover */
+            box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.15), 0 3px 6px -1px rgba(0, 0, 0, 0.08); /* Increased shadow on hover */
+        }
+        .certification-name {
+            font-size: 1.25rem; /* Larger font size */
+            font-weight: 600; /* Medium font weight */
+            margin-bottom: 0.75rem; /* Increased margin */
+            color: #1e293b; /* Darker title color */
+        }
+        .issuer {
+            font-size: 1rem; /* Larger font size */
+            color: #4b5563; /* Slightly darker color */
+            margin-bottom: 0.5rem; /* Increased margin */
+        }
+        .certification-date {
+            font-size: 0.875rem; /* Slightly larger font size */
+            color: #6b7280; /* Slightly darker color */
+        }
+        .contact-section {
+            background-color: #f7fafc; /* Very light background */
+            padding-top: 4rem; /* Increased padding */
+            padding-bottom: 4rem; /* Increased padding */
+            border-radius: 0.75rem; /* Rounded corners for the whole section */
+            margin-top: 2rem; /* Increased margin */
+            text-align: center; /* Center contact information */
+        }
+        .contact-heading {
+            font-size: 2.25rem; /* Larger font size */
+            font-weight: bold;
+            margin-bottom: 2rem; /* Increased margin */
+            color: #1e293b; /* Darker heading color */
+        }
+        .contact-details {
+            font-size: 1.25rem; /* Larger font size */
+            line-height: 2; /* Increased line height */
+            color: #4b5563; /* Slightly darker color */
+            margin-bottom: 2rem; /* Increased margin */
+        }
+        .social-links {
+            display: flex;
+            justify-content: center; /* Center social links */
+            gap: 1.5rem; /* Increased gap */
+        }
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 3rem; /* Larger icons */
+            height: 3rem; /* Larger icons */
+            border-radius: 50%;
+            background-color: white;
+            color: #1e293b; /* Darker icon color */
+            transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out; /* Smooth transition */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added shadow */
+        }
+        .social-link:hover {
+            background-color: #6366f1; /* More vibrant hover color */
+            color: white;
+            transform: scale(1.1); /* Slight scale on hover */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Increased shadow on hover */
+        }
+        .footer {
+            text-align: center;
+            padding: 2.5rem; /* Increased padding */
+            background-color: #f0f4f8; /* Very light background */
+            color: #6b7280; /* Slightly darker color */
+            border-top: 1px solid #e0e6ed; /* Subtle border */
+            margin-top: 4rem; /* Increased margin */
+            border-bottom-left-radius: 0.75rem;  /* Rounded corners */
+            border-bottom-right-radius: 0.75rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-white py-6 shadow-md">
+        <div class="container">
+            <div class="flex items-center justify-between">
+                <h1 class="text-2xl font-bold text-gray-800">M Manoj Kumar Reddy</h1>
+                <nav>
+                    <ul class="flex space-x-6">
+                        <li><a href="#about" class="text-gray-700 hover:text-blue-600 transition duration-300">About</a></li>
+                        <li><a href="#projects" class="text-gray-700 hover:text-blue-600 transition duration-300">Projects</a></li>
+                        <li><a href="#skills" class="text-gray-700 hover:text-blue-600 transition duration-300">Skills</a></li>
+                        <li><a href="#education" class="text-gray-700 hover:text-blue-600 transition duration-300">Education</a></li>
+                        <li><a href="#contact" class="text-gray-700 hover:text-blue-600 transition duration-300">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="about" class="container py-10">
+            <div class="section-header">
+                <img src="placeholder-profile-picture.png" alt="M Manoj Kumar Reddy" class="profile-picture">
+                <div class="header-content">
+                    <h2 class="section-header-title">About Me</h2>
+                    <p class="about-content">
+                        Highly motivated and results-oriented aspiring Data Scientist and AI Engineer with a strong academic foundation in Data Science, Artificial Intelligence, and Electronics & Communication Engineering. Proven ability to develop and implement machine learning models, conduct insightful data analysis, and visualize complex information. Eager to apply my skills in Python, SQL, R, and cloud computing (Microsoft Azure certified) to contribute to innovative and impactful projects. My experience includes developing applications for automation, medical image analysis, and employee burnout prediction. I am a quick learner, a strong problem-solver, and a collaborative team player.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="container py-10">
+            <h2 class="section-title">Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="project-card">
+                    <h3 class="project-title">Attendance Tracking System</h3>
+                    <p class="project-description">
+                        A Python application designed to automate college attendance tracking using laser scanner input. The system processes scanned data, separates it by college, and automatically sends attendance reports with date, time, and training information to relevant email addresses. Implemented with Docker for containerization and deployed on a Linux environment.
+                    </p>
+                    <div class="tech-stack">Tech Stack:</div>
+                    <div class="tech-list">
+                        <span class="tech-item">Python</span>
+                        <span class="tech-item">Laser Scanning</span>
+                        <span class="tech-item">Docker</span>
+                        <span class="tech-item">Linux</span>
+                        <span class="tech-item">Email Automation</span>
+                        <span class="tech-item">GitHub</span>
+                    </div>
+                    <a href="#" class="view-button">View on GitHub</a>
+                </div>
+                <div class="project-card">
+                    <h3 class="project-title">Brain Tumor Detection and Severity Analysis</h3>
+                    <p class="project-description">
+                        A medical image processing project focused on detecting and classifying brain tumors using MRI image datasets. Employed GUI development for user interaction and implemented various machine learning techniques for image analysis and classification. Involved statistical analysis and preprocessing of complex medical data.
+                    </p>
+                    <div class="tech-stack">Tech Stack:</div>
+                    <div class="tech-list">
+                        <span class="tech-item">Python</span>
+                        <span class="tech-item">Medical Image Processing</span>
+                        <span class="tech-item">GUI Development</span>
+                        <span class="tech-item">Machine Learning</span>
+                        <span class="tech-item">Statistical Analysis</span>
+                    </div>
+                    <a href="#" class="view-button">View Details</a>
+                </div>
+                <div class="project-card">
+                    <h3 class="project-title">AI Employees Burnout Analysis and Prediction</h3>
+                    <p class="project-description">
+                        This project aimed to develop a predictive model for employee burnout, enabling organizations to proactively identify and address potential issues. I utilized a dataset containing various workplace factors to train machine learning models.
+                    </p>
+                    <div class="tech-stack">Tech Stack:</div>
+                    <div class="tech-list">
+                        <span class="tech-item">Python</span>
+                        <span class="tech-item">Pandas</span>
+                        <span class="tech-item">NumPy</span>
+                        <span class="tech-item">Scikit-learn</span>
+                        <span class="tech-item">Jupyter Notebook</span>
+                        <span class="tech-item">Logistic Regression</span>
+                        <span class="tech-item">Random Forests</span>
+                        <span class="tech-item">Matplotlib</span>
+                        <span class="tech-item">Seaborn</span>
+                        <span class="tech-item">Git</span>
+                        <span class="tech-item">GitHub</span>
+                    </div>
+                    <a href="#" class="view-button">View on GitHub</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="skills-section">
+            <div class="container">
+                <h2 class="section-title">Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3 class="skill-title">Data Science & AI</h3>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width: 90%;">
+                                <span class="progress-bar-text">90%</span>
+                            </div>
+                        </div>
+                        <ul class="mt-4 space-y-2">
+                            <li>Machine Learning</li>
+                            <li>Deep Learning</li>
+                            <li>Exploratory Data Analysis (EDA)</li>
+                            <li>Generative AI</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <h3 class="skill-title">Programming Languages</h3>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width: 85%;">
+                                <span class="progress-bar-text">85%</span>
+                            </div>
+                        </div>
+                        <ul class="mt-4 space-y-2">
+                            <li>Python</li>
+                            <li>SQL</li>
+                            <li>R</li>
+                            <li>MATLAB</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <h3 class="skill-title">Data Visualization</h3>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width: 80%;">
+                                <span class="progress-bar-text">80%</span>
+                            </div>
+                        </div>
+                        <ul class="mt-4 space-y-2">
+                            <li>Excel</li>
+                            <li>Google Sheets</li>
+                            <li>Matplotlib</li>
+                            <li>Seaborn</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <h3 class="skill-title">Cloud Computing</h3>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width: 70%;">
+                                <span class="progress-bar-text">70%</span>
+                            </div>
+                        </div>
+                        <ul class="mt-4 space-y-2">
+                            <li>Microsoft Azure (AZ-104)</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <h3 class="skill-title">Statistical Analysis</h3>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width: 90%;">
+                                 <span class="progress-bar-text">90%</span>
+                            </div>
+                        </div>
+                        <ul class="mt-4 space-y-2">
+                            <li>Descriptive Statistics</li>
+                            <li>Inferential Statistics</li>
+                            <li>Probability</li>
+                            <li>Hypothesis Testing</li>
+                        </ul>
+                    </div>
+                    <div class="skill-card">
+                        <h3 class="skill-title">Databases & Tools</h3>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width: 80%;">
+                                <span class="progress-bar-text">80%</span>
+                            </div>
+                        </div>
+                        <ul class="mt-4 space-y-2">
+                            <li>SQL</li>
+                            <li>Pandas</li>
+                            <li>NumPy</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="education-section">
+            <div class="container">
+                <h2 class="section-title">Education</h2>
+                <div cl
