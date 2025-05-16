@@ -3,545 +3,551 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M Manoj Kumar Reddy - Data Scientist</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>M Manoj Kumar Reddy - Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(to bottom, #e0e7ff, #f3e8ff); /* Soft gradient background */
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            color: #f8f9fa;
+            background: #1b263b;
+            overflow-x: hidden;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
+        .canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
         }
         .section-title {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 2.5rem;
-            color: #2d3748;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            background: linear-gradient(to right, #7c3aed, #db2777); /* Vibrant gradient */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-family: 'Inter', sans-serif;
+            @apply text-4xl font-bold text-cyan-400 mb-10;
         }
-        .header {
-            background: linear-gradient(to right, #4f46e5, #7c3aed); /* Colorful header */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        .highlight-card {
+            @apply bg-gray-800 bg-opacity-80 rounded-xl p-8 mb-6 transform transition-all duration-300 border-r-4 border-cyan-500 shadow-lg;
+        }
+        .highlight-card:hover {
+            @apply shadow-2xl scale-105;
+        }
+        .highlight-title {
+            font-family: 'Inter', sans-serif;
+            @apply text-2xl font-bold text-white mb-3;
+        }
+        .highlight-desc {
+            @apply text-gray-300 text-lg;
         }
         .nav-link {
-            color: #ffffff;
-            font-weight: 500;
-            transition: color 0.3s ease;
+            @apply text-gray-300 hover:text-cyan-400 font-semibold transition-all duration-300;
         }
-        .nav-link:hover {
-            color: #f472b6; /* Bright pink hover */
+        .svg-icon {
+            width: 45px;
+            height: 45px;
+            margin-right: 15px;
+            transition: transform 0.3s ease;
         }
-        .project-card {
-            background-color: #ffffff;
-            border-radius: 1rem;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-left: 4px solid #10b981; /* Emerald accent */
+        .svg-icon:hover {
+            transform: scale(1.2) rotate(15deg);
         }
-        .project-card:hover {
-            transform: translateY(-0.5rem);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        .hero-section {
+            background: linear-gradient(135deg, rgba(27, 38, 59, 0.9), rgba(0, 180, 216, 0.2));
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
         }
-        .project-title {
-            font-size: 1.75rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            color: #1e40af; /* Deep blue */
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .project-description {
-            line-height: 1.75;
-            color: #4b5563;
-            margin-bottom: 1.5rem;
-        }
-        .tech-stack {
-            font-weight: 600;
-            color: #2d3748;
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .tech-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-        }
-        .tech-item {
-            background: linear-gradient(to right, #f472b6, #fb7185); /* Pink gradient */
-            color: #ffffff;
-            padding: 0.5rem 1rem;
-            border-radius: 1rem;
-            font-size: 0.875rem;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-        }
-        .view-button {
-            padding: 0.75rem 1.5rem;
-            background: linear-gradient(to right, #3b82f6, #10b981); /* Blue to emerald */
-            color: white;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: 0.75rem;
-            transition: background 0.3s ease, transform 0.3s ease;
-            cursor: pointer;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .view-button:hover {
-            background: linear-gradient(to right, #1e40af, #047857); /* Darker shades */
-            transform: scale(1.05);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .about-content {
-            line-height: 1.75;
-            color: #4b5563;
-            background-color: #f9fafb;
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .skills-section {
-            background: linear-gradient(to bottom, #a5b4fc, #d8b4fe); /* Indigo to purple */
-            padding: 4rem 0;
-            border-radius: 1rem;
-            margin-top: 2rem;
-        }
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-        }
-        .skill-card {
-            background-color: #ffffff;
-            border-radius: 1rem;
-            padding: 1.5rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-left: 4px solid #f472b6; /* Pink accent */
-        }
-        .skill-card:hover {
-            transform: translateY(-0.25rem);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-        }
-        .skill-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            color: #7c3aed; /* Vibrant purple */
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .skill-list li:before {
-            content: '\f058'; /* Font Awesome check-circle */
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            color: #10b981;
-            margin-right: 0.5rem;
-        }
-        .progress-bar {
-            background-color: #e5e7eb;
-            height: 0.75rem;
-            border-radius: 0.75rem;
-            position: relative;
-            overflow: hidden;
-        }
-        .progress-bar-fill {
-            background: linear-gradient(to right, #3b82f6, #10b981); /* Blue to emerald */
-            height: 100%;
-            border-radius: 0.75rem;
-            transition: width 0.5s ease-in-out;
-        }
-        .progress-bar-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 0.875rem;
-            font-weight: 600;
-        }
-        .education-section {
-            margin: 4rem 0;
-            background-color: #fef3c7; /* Soft yellow */
-            padding: 2rem;
-            border-radius: 1rem;
-        }
-        .education-card {
-            background-color: #ffffff;
-            border-radius: 1rem;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-left: 4px solid #3b82f6; /* Blue accent */
-        }
-        .education-card:hover {
-            transform: translateY(-0.25rem);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-        }
-        .degree {
-            font-size: 1.25rem;
-            font-weight: bold;
-            margin-bottom: 0.75rem;
-            color: #1e40af;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .university, .date, .gpa {
-            color: #4b5563;
-        }
-        .certifications-section {
-            margin: 4rem 0;
-            background-color: #d1fae5; /* Soft green */
-            padding: 2rem;
-            border-radius: 1rem;
-        }
-        .certification-card {
-            background-color: #ffffff;
-            border-radius: 1rem;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-left: 4px solid #db2777; /* Pink accent */
-        }
-        .certification-card:hover {
-            transform: translateY(-0.25rem);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-        }
-        .certification-name {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            color: #7c3aed;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .contact-section {
-            background: linear-gradient(to bottom, #f9a8d4, #fef3c7); /* Pink to yellow */
-            padding: 4rem 0;
-            border-radius: 1rem;
-            margin-top: 2rem;
-            text-align: center;
-        }
-        .contact-heading {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 2rem;
-            color: #2d3748;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-        .contact-details p {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            font-size: 1.25rem;
-            color: #4b5563;
-            margin-bottom: 0.75rem;
-        }
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-        }
-        .social-link {
-            width: 3.5rem;
-            height: 3.5rem;
-            border-radius: 50%;
-            background: linear-gradient(to right, #3b82f6, #10b981);
-            color: #ffffff;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .social-link:hover {
-            background: linear-gradient(to right, #1e40af, #047857);
-            transform: scale(1.1);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .footer {
-            text-align: center;
-            padding: 2.5rem;
-            background: linear-gradient(to right, #4f46e5, #7c3aed);
-            color: #ffffff;
-            margin-top: 4rem;
-            border-bottom-left-radius: 1rem;
-            border-bottom-right-radius: 1rem;
+        .contact-link {
+            @apply text-cyan-400 hover:text-cyan-300;
         }
     </style>
 </head>
 <body>
-    <header class="header py-6">
-        <div class="container">
-            <div class="flex items-center justify-between">
-                <h1 class="text-3xl font-bold text-white">M Manoj Kumar Reddy</h1>
-                <nav>
-                    <ul class="flex space-x-6">
-                        <li><a href="#about" class="nav-link">About</a></li>
-                        <li><a href="#projects" class="nav-link">Projects</a></li>
-                        <li><a href="#skills" class="nav-link">Skills</a></li>
-                        <li><a href="#education" class="nav-link">Education</a></li>
-                        <li><a href="#contact" class="nav-link">Contact</a></li>
-                    </ul>
-                </nav>
+    <!-- Particle Background -->
+    <canvas class="canvas" id="particleCanvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 bg-gray-900 bg-opacity-90 z-50 py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-cyan-400 font-['Inter']">M Manoj Kumar Reddy</h1>
+            <div class="space-x-6">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#education" class="nav-link">Education</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#internships" class="nav-link">Internships</a>
+                <a href="#certifications" class="nav-link">Certifications</a>
+                <a href="#awards" class="nav-link">Awards</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <main>
-        <section id="about" class="container py-12">
-            <h2 class="section-title"><i class="fas fa-user"></i> About Me</h2>
-            <div class="about-content">
-                <p>
-                    Highly motivated and results-oriented aspiring Data Scientist and AI Engineer with a strong academic foundation in Data Science, Artificial Intelligence, and Electronics & Communication Engineering. Proven ability to develop and implement machine learning models, conduct insightful data analysis, and visualize complex information. Eager to apply my skills in Python, SQL, R, and cloud computing (Microsoft Azure certified) to contribute to innovative and impactful projects. My experience includes developing applications for automation, medical image analysis, and employee burnout prediction. I am a quick learner, a strong problem-solver, and a collaborative team player.
-                </p>
+    <!-- Hero Section -->
+    <section id="home" class="hero-section min-h-screen flex items-center justify-center text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <h1 class="text-6xl font-bold text-white mb-4 animate-title font-['Inter']">M Manoj Kumar Reddy</h1>
+            <p class="text-xl text-gray-200 mb-8 animate-subtitle">Data Science & AI Innovator | Machine Learning Expert | Azure Certified</p>
+            <a href="#about" class="inline-block bg-cyan-400 text-gray-900 font-semibold py-3 px-8 rounded-full hover:bg-cyan-500 transition-all duration-300">Discover My Journey</a>
+            <div class="mt-8">
+                <svg class="svg-icon mx-auto animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2v20m-7-7l7 7 7-7"/>
+                </svg>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="projects" class="container py-12">
-            <h2 class="section-title"><i class="fas fa-project-diagram"></i> Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="project-card">
-                    <h3 class="project-title"><i class="fas fa-fingerprint"></i> Attendance Tracking System</h3>
-                    <p class="project-description">
-                        A Python application designed to automate college attendance tracking using laser scanner input. The system processes scanned data, separates it by college, and automatically sends attendance reports with date, time, and training information to relevant email addresses. Implemented with Docker for containerization and deployed on a Linux environment.
-                    </p>
-                    <div class="tech-stack"><i class="fas fa-tools"></i> Tech Stack:</div>
-                    <div class="tech-list">
-                        <span class="tech-item"><i class="fab fa-python"></i> Python</span>
-                        <span class="tech-item"><i class="fas fa-qrcode"></i> Laser Scanning</span>
-                        <span class="tech-item"><i class="fab fa-docker"></i> Docker</span>
-                        <span class="tech-item"><i class="fab fa-linux"></i> Linux</span>
-                        <span class="tech-item"><i class="fas fa-envelope"></i> Email Automation</span>
-                        <span class="tech-item"><i class="fab fa-github"></i> GitHub</span>
-                    </div>
-                    <a href="#" class="view-button"><i class="fab fa-github"></i> View on GitHub</a>
-                </div>
-                <div class="project-card">
-                    <h3 class="project-title"><i class="fas fa-brain"></i> Brain Tumor Detection and Severity Analysis</h3>
-                    <p class="project-description">
-                        A medical image processing project focused on detecting and classifying brain tumors using MRI image datasets. Employed GUI development for user interaction and implemented various machine learning techniques for image analysis and classification. Involved statistical analysis and preprocessing of complex medical data.
-                    </p>
-                    <div class="tech-stack"><i class="fas fa-tools"></i> Tech Stack:</div>
-                    <div class="tech-list">
-                        <span class="tech-item"><i class="fab fa-python"></i> Python</span>
-                        <span class="tech-item"><i class="fas fa-image"></i> Medical Image Processing</span>
-                        <span class="tech-item"><i class="fas fa-desktop"></i> GUI Development</span>
-                        <span class="tech-item"><i class="fas fa-robot"></i> Machine Learning</span>
-                        <span class="tech-item"><i class="fas fa-chart-bar"></i> Statistical Analysis</span>
-                    </div>
-                    <a href="#" class="view-button"><i class="fas fa-info-circle"></i> View Details</a>
-                </div>
-                <div class="project-card">
-                    <h3 class="project-title"><i class="fas fa-users"></i> AI Employees Burnout Analysis and Prediction</h3>
-                    <p class="project-description">
-                        This project aimed to develop a predictive model for employee burnout, enabling organizations to proactively identify and address potential issues. I utilized a dataset containing various workplace factors to train machine learning models.
-                    </p>
-                    <div class="tech-stack"><i class="fas fa-tools"></i> Tech Stack:</div>
-                    <div class="tech-list">
-                        <span class="tech-item"><i class="fab fa-python"></i> Python</span>
-                        <span class="tech-item"><i class="fas fa-table"></i> Pandas</span>
-                        <span class="tech-item"><i class="fas fa-calculator"></i> NumPy</span>
-                        <span class="tech-item"><i class="fas fa-robot"></i> Scikit-learn</span>
-                        <span class="tech-item"><i class="fas fa-book"></i> Jupyter Notebook</span>
-                        <span class="tech-item"><i class="fas fa-chart-line"></i> Logistic Regression</span>
-                        <span class="tech-item"><i class="fas fa-tree"></i> Random Forests</span>
-                        <span class="tech-item"><i class="fas fa-chart-pie"></i> Matplotlib</span>
-                        <span class="tech-item"><i class="fas fa-chart-area"></i> Seaborn</span>
-                        <span class="tech-item"><i class="fas fa-code-branch"></i> Git</span>
-                        <span class="tech-item"><i class="fab fa-github"></i> GitHub</span>
-                    </div>
-                    <a href="#" class="view-button"><i class="fab fa-github"></i> View on GitHub</a>
+    <!-- About Section -->
+    <section id="about" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title">About Me</h2>
+            <div class="highlight-card flex items-center">
+                <svg class="svg-icon animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 12a5 5 0 100-10 5 5 0 000 10zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                </svg>
+                <div>
+                    <h3 class="highlight-title">My Passion for Data Science</h3>
+                    <p class="highlight-desc">
+                        As a Data Science and AI graduate student at the University of Central Missouri, I thrive on transforming data into actionable insights. With expertise in machine learning, statistical analysis, and cloud computing, I tackle real-world challenges using Python, SQL, and Azure. My curiosity drives me to innovate and contribute to cutting-edge technological solutions.
+                   /ManojKumarReddyPortfolio/about
                 </div>
             </div>
         </section>
 
-        <section id="skills" class="skills-section">
-            <div class="container">
-                <h2 class="section-title"><i class="fas fa-tools"></i> Skills</h2>
-                <div class="skills-grid">
-                    <div class="skill-card">
-                        <h3 class="skill-title"><i class="fas fa-robot"></i> Data Science & AI</h3>
-                        <div class="progress-bar">
-                            <div class="progress-bar-fill" style="width: 90%;">
-                                <span class="progress-bar-text">90%</span>
-                            </div>
-                        </div>
-                        <ul class="mt-4 space-y-2 skill-list">
-                            <li>Machine Learning</li>
-                            <li>Deep Learning</li>
-                            <li>Exploratory Data Analysis (EDA)</li>
-                            <li>Generative AI</li>
-                        </ul>
+        <!-- Education Section -->
+        <section id="education" class="py-20 bg-gray-900 bg-opacity-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">Education</h2>
+                <div class="highlight-card flex items-start">
+                    <svg class="svg-icon animate-spin-slow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                    </svg>
+                    <div>
+                        <h3 class="highlight-title">Master of Science: Data Science and Artificial Intelligence</h3>
+                        <p class="highlight-desc">University of Central Missouri, Lee’s Summit, KS | Jan 2025 - Dec 2026 | GPA: 4.0/4.0</p>
+                        <p class="highlight-desc mt-2">Deepening my expertise in AI, machine learning, and advanced analytics to solve complex data-driven problems.</p>
                     </div>
-                    <div class="skill-card">
-                        <h3 class="skill-title"><i class="fas fa-code"></i> Programming Languages</h3>
-                        <div class="progress-bar">
-                            <div class="progress-bar-fill" style="width: 85%;">
-                                <span class="progress-bar-text">85%</span>
-                            </div>
-                        </div>
-                        <ul class="mt-4 space-y-2 skill-list">
-                            <li>Python</li>
-                            <li>SQL</li>
-                            <li>R</li>
-                            <li>MATLAB</li>
-                        </ul>
-                    </div>
-                    <div class="skill-card">
-                        <h3 class="skill-title"><i class="fas fa-chart-bar"></i> Data Visualization</h3>
-                        <div class="progress-bar">
-                            <div class="progress-bar-fill" style="width: 80%;">
-                                <span class="progress-bar-text">80%</span>
-                            </div>
-                        </div>
-                        <ul class="mt-4 space-y-2 skill-list">
-                            <li>Excel</li>
-                            <li>Google Sheets</li>
-                            <li>Matplotlib</li>
-                            <li>Seaborn</li>
-                        </ul>
-                    </div>
-                    <div class="skill-card">
-                        <h3 class="skill-title"><i class="fas fa-cloud"></i> Cloud Computing</h3>
-                        <div class="progress-bar">
-                            <div class="progress-bar-fill" style="width: 70%;">
-                                <span class="progress-bar-text">70%</span>
-                            </div>
-                        </div>
-                        <ul class="mt-4 space-y-2 skill-list">
-                            <li>Microsoft Azure (AZ-104)</li>
-                        </ul>
-                    </div>
-                    <div class="skill-card">
-                        <h3 class="skill-title"><i class="fas fa-chart-line"></i> Statistical Analysis</h3>
-                        <div class="progress-bar">
-                            <div class="progress-bar-fill" style="width: 90%;">
-                                <span class="progress-bar-text">90%</span>
-                            </div>
-                        </div>
-                        <ul class="mt-4 space-y-2 skill-list">
-                            <li>Descriptive Statistics</li>
-                            <li>Inferential Statistics</li>
-                            <li>Probability</li>
-                            <li>Hypothesis Testing</li>
-                        </ul>
-                    </div>
-                    <div class="skill-card">
-                        <h3 class="skill-title"><i class="fas fa-database"></i> Databases & Tools</h3>
-                        <div class="progress-bar">
-                            <div class="progress-bar-fill" style="width: 80%;">
-                                <span class="progress-bar-text">80%</span>
-                            </div>
-                        </div>
-                        <ul class="mt-4 space-y-2 skill-list">
-                            <li>SQL</li>
-                            <li>Pandas</li>
-                            <li>NumPy</li>
-                        </ul>
+                </div>
+                <div class="highlight-card flex items-start">
+                    <svg class="svg-icon animate-spin-slow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                    </svg>
+                    <div>
+                        <h3 class="highlight-title">Bachelor of Technology: Electronics and Communication Engineering</h3>
+                        <p class="highlight-desc">Aditya College of Engineering and Technology, Surampalem, India | May 2020 - May 2024 | GPA: 3.3/4.0</p>
+                        <p class="highlight-desc mt-2">Established a strong engineering foundation, enhancing my technical skills in electronics and systems design.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="education" class="education-section">
-            <div class="container">
-                <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
-                <div class="education-list">
-                    <div class="education-card">
-                        <h3 class="degree"><i class="fas fa-book"></i> Master of Science: Data Science and Artificial Intelligence</h3>
-                        <p class="university">University of Central Missouri - Lee’s Summit, KS</p>
-                        <p class="date">January 2025 - December 2026</p>
-                        <p class="gpa">GPA: 4.0/4.0</p>
+        <!-- Skills Section -->
+        <section id="skills" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="highlight-card flex items-start">
+                        <svg class="svg-icon animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 3h18v18H3zM12 8v8m-4-4h8"/>
+                        </svg>
+                        <div>
+                            <h3 class="highlight-title">Data Science & AI</h3>
+                            <p class="highlight-desc">Skilled in Machine Learning, Exploratory Data Analysis (EDA), and Generative AI, driving innovation through data insights.</p>
+                        </div>
                     </div>
-                    <div class="education-card">
-                        <h3 class="degree"><i class="fas fa-book"></i> Bachelor of Technology: Electronics and Communication Engineering</h3>
-                        <p class="university">Aditya College of Engineering and Technology – Surampalem, India</p>
-                        <p class="date">May 2020 - May 2024</p>
-                        <p class="gpa">GPA: 3.3/4.0</p>
+                    <div class="highlight-card flex items-start">
+                        <svg class="svg-icon animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                        <div>
+                            <h3 class="highlight-title">Programming Languages</h3>
+                            <p class="highlight-desc">Proficient in Python, SQL, R, and MATLAB for efficient data processing and model development.</p>
+                        </div>
+                    </div>
+                    <div class="highlight-card flex items-start">
+                        <svg class="svg-icon animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 3h18v18H3zM7 7h10v10H7z"/>
+                        </svg>
+                        <div>
+                            <h3 class="highlight-title">Data Visualization</h3>
+                            <p class="highlight-desc">Experienced with Excel, Google Sheets, Matplotlib, and Seaborn to create impactful visual data stories.</p>
+                        </div>
+                    </div>
+                    <div class="highlight-card flex items-start">
+                        <svg class="svg-icon animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M2 12h20M12 2v20"/>
+                        </svg>
+                        <div>
+                            <h3 class="highlight-title">Cloud Computing</h3>
+                            <p class="highlight-desc">Azure-certified (AZ-104), adept at managing cloud infrastructure and deploying scalable solutions.</p>
+                        </div>
+                    </div>
+                    <div class="highlight-card flex items-start">
+                        <svg class="svg-icon animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 18v-6a9 9 0 0118 0v6"/>
+                        </svg>
+                        <div>
+                            <h3 class="highlight-title">Statistical Analysis</h3>
+                            <p class="highlight-desc">Expert in Descriptive Statistics, Probability, and Hypothesis Testing for data-driven decision-making.</p>
+                        </div>
+                    </div>
+                    <div class="highlight-card flex items-start">
+                        <svg class="svg-icon animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 7V4h16v3M4 12h16M4 20h16v-3"/>
+                        </svg>
+                        <div>
+                            <h3 class="highlight-title">Database & Tools</h3>
+                            <p class="highlight-desc">Proficient in SQL, Pandas, and NumPy for robust data manipulation and analysis.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="certifications" class="certifications-section">
-            <div class="container">
-                <h2 class="section-title"><i class="fas fa-certificate"></i> Certifications</h2>
-                <div class="certification-list">
-                    <div class="certification-card">
-                        <h3 class="certification-name"><i class="fab fa-python"></i> Python for Data Science</h3>
-                        <p class="issuer">NPTEL</p>
-                        <p class="certification-date">AUG 2023</p>
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 bg-gray-900 bg-opacity-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">Projects</h2>
+                <div class="highlight-card flex items-start">
+                    <svg class="svg-icon animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/>
+                        <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/>
+                    </svg>
+                    <div>
+                        <h3 class="highlight-title">Attendance Tracking System</h3>
+                        <p class="highlight-desc">Developed a Python application to automate attendance scanning with a laser scanner, organize data, and email reports. Deployed in Docker on Linux. <a href="#" class="contact-link">GitHub</a></p>
                     </div>
-                    <div class="certification-card">
-                        <h3 class="certification-name"><i class="fas fa-cloud"></i> Azure Administrator Associate (AZ-104)</h3>
-                        <p class="issuer">Microsoft</p>
-                        <p class="certification-date">MAY 2023</p>
+                </div>
+                <div class="highlight-card flex items-start">
+                    <svg class="svg-icon animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    <div>
+                        <h3 class="highlight-title">Brain Tumor Detection and Severity Analysis</h3>
+                        <p class="highlight-desc">Built a machine learning model to detect and classify brain tumors from MRI images, with a GUI and statistical preprocessing.</p>
                     </div>
-                    <div class="certification-card">
-                        <h3 class="certification-name"><i class="fas fa-cloud"></i> Azure Fundamentals (AZ-900)</h3>
-                        <p class="issuer">Microsoft</p>
-                        <p class="certification-date">MAY 2023</p>
+                </div>
+                <div class="highlight-card flex items-start">
+                    <svg class="svg-icon animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 010 7.75"/>
+                    </svg>
+                    <div>
+                        <h3 class="highlight-title">AI Employees Burnout Analysis and Prediction</h3>
+                        <p class="highlight-desc">Used machine learning (logistic regression, random forests) in Jupyter Notebook to predict employee burnout. <a href="#" class="contact-link">GitHub</a></p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="contact-section">
-            <div class="container">
-                <h2 class="contact-heading"><i class="fas fa-envelope"></i> Contact Me</h2>
-                <div class="contact-details">
-                    <p><i class="fas fa-map-marker-alt"></i> Overland Park, KS, 66213</p>
-                    <p><i class="fas fa-phone"></i> +1 (913) 238-8923</p>
-                    <p><i class="fas fa-envelope"></i> <a href="mailto:mallireddymanojreddy@gmail.com" class="text-blue-600 hover:underline">mallireddymanojreddy@gmail.com</a></p>
+        <!-- Internships Section -->
+        <section id="internships" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">Internships</h2>
+                <div class="highlight-card flex items-start">
+                    <svg class="svg-icon animate-spin-slow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2v4m0 12v4M2 12h4m12 0h4"/>
+                    </svg>
+                    <div>
+                        <h3 class="highlight-title">Data Science and Machine Learning</h3>
+                        <p class="highlight-desc">May 2023 - July 2023 | Applied Train-Test Split, Linear Regression, and Logistic Regression to real-world datasets.</p>
+                    </div>
                 </div>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/mallireddy-manoj-kumar-reddy-3a7601213/" class="social-link" target="_blank">
-                        <i class="fab fa-linkedin fa-lg"></i>
-                    </a>
-                    <a href="https://github.com/manojreddy041002" class="social-link" target="_blank">
-                        <i class="fab fa-github fa-lg"></i>
-                    </a>
+                <div class="highlight-card flex items-start">
+                    <svg class="svg-icon animate-spin-slow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2v4m0 12v4M2 12h4m12 0h4"/>
+                    </svg>
+                    <div>
+                        <h3 class="highlight-title">Salesforce Administrator</h3>
+                        <p class="highlight-desc">Aug 2022 - Oct 2022 | Solved cases in Sales Cloud, Service Cloud, and Process Automation.</p>
+                    </div>
+                </div>
+                <div class="highlight-card flex items-start">
+                    <svg class="svg-icon animate-spin-slow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2v4m0 12v4M2 12h4m12 0h4"/>
+                    </svg>
+                    <div>
+                        <h3 class="highlight-title">VLSI by AICTE</h3>
+                        <p class="highlight-desc">Jan 2024 - Apr 2024 | Learned VLSI design, focusing on Logic Designs and Memory Elements at SkillDzire.</p>
+                    </div>
                 </div>
             </div>
         </section>
-    </main>
 
-    <footer class="footer">
-        <p>© 2025 M Manoj Kumar Reddy. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+        <!-- Certifications Section -->
+        <section id="certifications" class="py-20 bg-gray-900 bg-opacity-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">Certifications</h2>
+                <div class="highlight-card flex items-start">
+                    <svg class="svg-icon animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 13l4 4L19 7"/>
+                        <circle cx="12" cy="12" r="10"/>
+                    </svg>
+                    <div>
+                        <h3 class="highlight-title">Python for Data Science from NPTEL</h3>
+                        <p class="highlight-desc">Mastered Python for data manipulation, visualization, and machine learning.</p>
+                    </div>
+                </div>
+                <div class="highlight-card flex items-start">
+                    <svg class="svg-icon animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 13l4 4L19 7"/>
+                        <circle cx="12" cy="12" r="10"/>
+                    </svg>
+                    <div>
+                        <h3 class="highlight-title">Azure Administrative Associate (AZ-104)</h3>
+                        <p class="highlight-desc">Certified in managing Azure infrastructure, including VMs and networking.</p>
+                    </div>
+                </div>
+                <div class="highlight-card flex items-start">
+                    <svg class="svg-icon animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 13l4 4L19 7"/>
+                        <circle cx="12" cy="12" r="10"/>
+                    </svg>
+                    <div>
+                        <h3 class="highlight-title">Azure Fundamentals from Microsoft (AZ-900)</h3>
+                        <p class="highlight-desc">Gained foundational knowledge of Azure cloud services and security.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Awards Section -->
+        <section id="awards" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">Awards and Achievements</h2>
+                <div class="highlight-card flex items-start">
+                    <svg class="svg-icon animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <div>
+                        <h3 class="highlight-title">Published Research Paper</h3>
+                        <p class="highlight-desc">Authored "Automatic Detection and Severity Analysis of Brain Tumors" in the IIIE journal, showcasing medical image processing expertise.</p>
+                    </div>
+                </div>
+                <div class="highlight-card flex items-start">
+                    <svg class="svg-icon animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <div>
+                        <h3 class="highlight-title">NSS Rally Participation Award</h3>
+                        <p class="highlight-desc">Recognized for promoting social awareness through active participation in NSS rallies.</p>
+                    </div>
+                </div>
+                <div class="highlight-card flex items-start">
+                    <svg class="svg-icon animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <div>
+                        <h3 class="highlight-title">Mentored VEDA Technical Event</h3>
+                        <p class="highlight-desc">Guided students in problem-solving and teamwork during the VEDA technical event.</p>
+                    </div>
+                </div>
+                <div class="highlight-card flex items-start">
+                    <svg class="svg-icon animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <div>
+                        <h3 class="highlight-title">Class Representative</h3>
+                        <p class="highlight-desc">Managed student coordination and administrative tasks as Class Representative.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Me Section -->
+        <section id="contact" class="py-20 bg-gray-900 bg-opacity-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="section-title">Contact Me</h2>
+                <div class="highlight-card">
+                    <div class="flex items-center mb-6">
+                        <svg class="svg-icon animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <path d="M22 6l-10 7-10-7"/>
+                        </svg>
+                        <div>
+                            <h3 class="highlight-title">Email</h3>
+                            <p class="highlight-desc">Reach out to me directly at <a href="mailto:mallireddymanojreddy@gmail.com" class="contact-link">mallireddymanojreddy@gmail.com</a> for collaborations or inquiries.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center mb-6">
+                        <svg class="svg-icon animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                        <div>
+                            <h3 class="highlight-title">LinkedIn</h3>
+                            <p class="highlight-desc">Connect with me on <a href="#" class="contact-link">LinkedIn</a> to explore my professional network and updates.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <svg class="svg-icon animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 9v6h6m-6-6h6m-3-9a9 9 0 11-6 2.598"/>
+                        </svg>
+                        <div>
+                            <h3 class="highlight-title">GitHub</h3>
+                            <p class="highlight-desc">Check out my projects and code on <a href="#" class="contact-link">GitHub</a> to see my work in action.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-gray-300 py-10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <p>© 2025 M Manoj Kumar Reddy. All rights reserved.</p>
+            </div>
+        </footer>
+
+        <script>
+            // Particle Background
+            const canvas = document.getElementById('particleCanvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const particlesArray = [];
+            const numberOfParticles = 100;
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 5 + 1;
+                    this.speedX = Math.random() * 3 - 1.5;
+                    this.speedY = Math.random() * 3 - 1.5;
+                }
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    if (this.size > 0.2) this.size -= 0.1;
+                    if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                    if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+                }
+                draw() {
+                    ctx.fillStyle = 'rgba(0, 180, 216, 0.8)';
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            function init() {
+                for (let i = 0; i < numberOfParticles; i++) {
+                    particlesArray.push(new Particle());
+                }
+            }
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let i = 0; i < particlesArray.length; i++) {
+                    particlesArray[i].update();
+                    particlesArray[i].draw();
+ अगर if (particlesArray[i].size <= 0.2) {
+                        particlesArray.splice(i, 1);
+                        i--;
+                        particlesArray.push(new Particle());
+                    }
+                }
+                requestAnimationFrame(animateParticles);
+            }
+
+            init();
+            animateParticles();
+
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // GSAP Animations
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Hero section animations
+            gsap.from('.animate-title', {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                ease: 'power3.out'
+            });
+            gsap.from('.animate-subtitle', {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                delay: 0.3,
+                ease: 'power3.out'
+            });
+
+            // Animate sections on scroll
+            gsap.utils.toArray('.highlight-card').forEach(card => {
+                gsap.from(card, {
+                    opacity: 0,
+                    y: 50,
+                    duration: 0.8,
+                    scrollTrigger: {
+                        trigger: card,
+                        start: 'top 80%',
+                        toggleActions: 'play none none none'
+                    }
+                });
+            });
+
+            gsap.utils.toArray('.section-title').forEach(title => {
+                gsap.from(title, {
+                    opacity: 0,
+                    x: -50,
+                    duration: 0.8,
+                    scrollTrigger: {
+                        trigger: title,
+                        start: 'top 80%',
+                        toggleActions: 'play none none none'
+                    }
+                });
+            });
+
+            // Animate SVG icons
+            gsap.utils.toArray('.animate-bounce').forEach(icon => {
+                gsap.to(icon, {
+                    y: -10,
+                    duration: 1,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: 'power1.inOut'
+                });
+            });
+
+            gsap.utils.toArray('.animate-pulse').forEach(icon => {
+                gsap.to(icon, {
+                    scale: 1.1,
+                    duration: 1.5,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: 'power1.inOut'
+                });
+            });
+
+            gsap.utils.toArray('.animate-spin-slow').forEach(icon => {
+                gsap.to(icon, {
+                    rotation: 360,
+                    duration: 10,
+                    repeat: -1,
+                    ease: 'none'
+                });
+            });
+        </script>
+    </body>
+    </html>
